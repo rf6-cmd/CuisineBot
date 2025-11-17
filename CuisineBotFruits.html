@@ -5,157 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CuisineBot</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
   <style>
     body {
-    background-color: #F2DDA7; /* You can use any color name, hex, rgb, etc. */
+      background-color: #F2DDA7;
     }
     .box {
-    width: 300px;
-    height: 100px;
-    padding-top: 30px;
-    padding-left: 20px;
-    margin: 10px auto;
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-align: left; 
+      width: 300px;
+      height: 100px;
+      padding-top: 30px;
+      padding-left: 20px;
+      margin: 10px auto;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: left; 
     }
-
     .interactive:hover {
-      border: 5px solid #FCBA0F; /* Change to any color you like */
+      border: 5px solid #FCBA0F;
     }
     .box-link {
-      text-decoration: none; /* Removes underline */
-      display: block; /* Makes the link fill the box */
+      text-decoration: none;
+      display: block;
     }
     a {
-      color: black;         /* Change to any color you want */
-      text-decoration: none; /* Removes the underline */
+      color: black;
+      text-decoration: none;
     }
     .interactive.selected {
       border: 5px solid #fc910f;
     }
-    .box:focus {
-  outline: none;
-  border: 5px solid #fcd060;
-}
- .box.selected {
-      border: 5px solid #fc910f;
-      background-color: #ffe8c2;
-      transition: background-color 0.2s ease, border 0.2s ease;
+    #connectBtn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 1rem;
     }
-
   </style>
 </head>
-
-
 
 <body>
   <h1 style="color:black; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.5rem;">CuisineBot</h1>
   <p style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 2rem;">Fruits</p>
 
+  <button id="connectBtn">Connect Arduino</button>
 
-
-  <a href="index.html" class="box-link">
-    <div class="box interactive" data-selectable="false" tabindex="0">Back
+  <a href="CusineBot.html" class="box-link">
+    <div class="box interactive" data-selectable="false">Back
       <img src="https://i.postimg.cc/cHkrMFpR/93634.png" alt="Back" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
     </div>
   </a>
 
-  <div class="box interactive" data-name="Apple" tabindex="0">Apple
-    <img src="https://i.postimg.cc/8P40jdV6/Fresh-Red-Delicious-Apple-Each-7320e63a-de46-4a16-9b8c-526e15219a12-3-e557c1ad9973e1f76f512b34950243.avif" alt="Amaranth" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <!-- Fruits -->
+  <div class="box interactive" data-name="Apple">Apple
+    <img src="https://i.postimg.cc/8P40jdV6/Fresh-Red-Delicious-Apple-Each-7320e63a-de46-4a16-9b8c-526e15219a12-3-e557c1ad9973e1f76f512b34950243.avif" alt="Apple" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Apricot" tabindex="0">Apricot
-    <img src="https://i.postimg.cc/ZYFfMP0m/images.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Apricot">Apricot
+    <img src="https://i.postimg.cc/ZYFfMP0m/images.jpg" alt="Apricot" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Banana" tabindex="0">Banana
-    <img src="https://i.postimg.cc/CKq7Hk9b/Banana-Single.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Banana">Banana
+    <img src="https://i.postimg.cc/CKq7Hk9b/Banana-Single.jpg" alt="Banana" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Blackberry" tabindex="0">Blackberry
-    <img src="https://i.postimg.cc/4yBQN5h9/80886A.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Blackberry">Blackberry
+    <img src="https://i.postimg.cc/4yBQN5h9/80886A.webp" alt="Blackberry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Blueberry" tabindex="0">Blueberry
-    <img src="https://i.postimg.cc/MTw7747p/1-bddce89c-0097-45d3-a062-ac4a1a57be4e.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Blueberry">Blueberry
+    <img src="https://i.postimg.cc/MTw7747p/1-bddce89c-0097-45d3-a062-ac4a1a57be4e.webp" alt="Blueberry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Cantaloupe" tabindex="0">Cantaloupe
-    <img src="https://i.postimg.cc/kXGxvWbT/Cantaloupe-each-fb4c18a5-9367-4770-b99f-7518c72db482-5609c32e87a3110b734aad048bf9fe35.avif" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Cantaloupe">Cantaloupe
+    <img src="https://i.postimg.cc/kXGxvWbT/Cantaloupe-each-fb4c18a5-9367-4770-b99f-7518c72db482-5609c32e87a3110b734aad048bf9fe35.avif" alt="Cantaloupe" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Cherry" tabindex="0">Cherry
-    <img src="https://i.postimg.cc/KzQMnYcH/istockphoto-506627545-612x612.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Cherry">Cherry
+    <img src="https://i.postimg.cc/KzQMnYcH/istockphoto-506627545-612x612.jpg" alt="Cherry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Cranberry" tabindex="0">Cranberry
-    <img src="https://i.postimg.cc/c1bKZ2vS/cranberry-steven-foster-square.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Cranberry">Cranberry
+    <img src="https://i.postimg.cc/c1bKZ2vS/cranberry-steven-foster-square.jpg" alt="Cranberry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Dates" tabindex="0">Dates
-    <img src="https://i.postimg.cc/XJvJ6k3x/Basically-Medjool-Dates.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Dates">Dates
+    <img src="https://i.postimg.cc/XJvJ6k3x/Basically-Medjool-Dates.webp" alt="Dates" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Dragonfruit" tabindex="0">Dragonfruit
-    <img src="https://i.postimg.cc/76XKfDFr/3-count-image-of-dragon-fruit-red-fruit-1125636341-512x512-1.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
-   </div>
-  <div class="box interactive" data-name="Figs" tabindex="0">Figs
-    <img src="https://i.postimg.cc/HWqyXFdf/figs-2056729.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Dragonfruit">Dragon Fruit
+    <img src="https://i.postimg.cc/76XKfDFr/3-count-image-of-dragon-fruit-red-fruit-1125636341-512x512-1.webp" alt="Dragon Fruit" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Grapes" tabindex="0">Grapes
-    <img src="https://i.postimg.cc/mrpcD5dR/000325211-1.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Figs">Figs
+    <img src="https://i.postimg.cc/HWqyXFdf/figs-2056729.jpg" alt="Figs" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Grapefruit" tabindex="0">Grapefruit
-    <img src="https://i.postimg.cc/jSsChb9k/Fresh-Red-Grapefruit-Each-9b886c2a-7fc2-4dbd-98fe-99c8e48e6944-f2698681c6f777003cfd13d7c6086d09.avif" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Grapes">Grapes
+    <img src="https://i.postimg.cc/mrpcD5dR/000325211-1.webp" alt="Grapes" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Kiwi" tabindex="0">Kiwi
-    <img src="https://i.postimg.cc/gkp0YpYR/kiwi.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Grapefruit">Grapefruit
+    <img src="https://i.postimg.cc/jSsChb9k/Fresh-Red-Grapefruit-Each-9b886c2a-7fc2-4dbd-98fe-99c8e48e6944-f2698681c6f777003cfd13d7c6086d09.avif" alt="Grapefruit" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Lemon" tabindex="0">Lemon
-    <img src="https://i.postimg.cc/PxZtj39b/184080144.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Kiwi">Kiwi
+    <img src="https://i.postimg.cc/gkp0YpYR/kiwi.webp" alt="Kiwi" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Lime" tabindex="0">Lime
-    <img src="https://i.postimg.cc/L8X2X6G8/Fresh-Lime-Each-12314833-2e54-4739-94a2-7db45b63109d-16ff07e3c111df9be4158853c2e505ef.avif" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Lemon">Lemon
+    <img src="https://i.postimg.cc/PxZtj39b/184080144.webp" alt="Lemon" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Mandarin" tabindex="0">Mandarin
-    <img src="https://i.postimg.cc/rFh2v2z6/mandarins.png" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Lime">Lime
+    <img src="https://i.postimg.cc/L8X2X6G8/Fresh-Lime-Each-12314833-2e54-4739-94a2-7db45b63109d-16ff07e3c111df9be4158853c2e505ef.avif" alt="Lime" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Mango" tabindex="0">Mango
-    <img src="https://i.postimg.cc/yY8whpjn/bg-home-right-1.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Mandarin">Mandarin
+    <img src="https://i.postimg.cc/rFh2v2z6/mandarins.png" alt="Mandarin" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Orange" tabindex="0">Orange
-    <img src="https://i.postimg.cc/rpNJPMFj/oranges.png" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Mango">Mango
+    <img src="https://i.postimg.cc/yY8whpjn/bg-home-right-1.webp" alt="Mango" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Papaya" tabindex="0">Papaya
-    <img src="https://i.postimg.cc/GpKFjKqQ/PAPAYA-YELLOW-600x.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Orange">Orange
+    <img src="https://i.postimg.cc/rpNJPMFj/oranges.png" alt="Orange" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Peach" tabindex="0">Peach
-    <img src="https://i.postimg.cc/sfqpKv4r/0fb19ee3-a85c-4519-bc82-0cffa554cfa6-3f1325ff0c0b5334793483425bc92ace.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Papaya">Papaya
+    <img src="https://i.postimg.cc/GpKFjKqQ/PAPAYA-YELLOW-600x.webp" alt="Papaya" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Pear" tabindex="0">Pear
-    <img src="https://i.postimg.cc/JhpXXnzK/IMG-2063-1200x1200-crop-center.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Peach">Peach
+    <img src="https://i.postimg.cc/sfqpKv4r/0fb19ee3-a85c-4519-bc82-0cffa554cfa6-3f1325ff0c0b5334793483425bc92ace.webp" alt="Peach" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Pineapple" tabindex="0">Pineapple
-    <img src="https://i.postimg.cc/WbZyTD2B/organic-pineaple.png" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Pear">Pear
+    <img src="https://i.postimg.cc/JhpXXnzK/IMG-2063-1200x1200-crop-center.webp" alt="Pear" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Plum" tabindex="0">Plum
-    <img src="https://i.postimg.cc/rsrfVbL5/grocerapp-plum-5f659dc2d89da.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Pineapple">Pineapple
+    <img src="https://i.postimg.cc/WbZyTD2B/organic-pineaple.png" alt="Pineapple" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Pomegranate" tabindex="0">Pomegranate
-    <img src="https://i.postimg.cc/rpZjScVS/pomegranate-seeds-r.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Plum">Plum
+    <img src="https://i.postimg.cc/rsrfVbL5/grocerapp-plum-5f659dc2d89da.jpg" alt="Plum" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Raspberry" tabindex="0">Raspberry
-    <img src="https://i.postimg.cc/6qJd0pDV/BERRAS-RD-HERITAGE-2T.jpg" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Pomegranate">Pomegranate
+    <img src="https://i.postimg.cc/rpZjScVS/pomegranate-seeds-r.jpg" alt="Pomegranate" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Strawberry" tabindex="0">Strawberry
-    <img src="https://i.postimg.cc/pdmzMjv5/20170323-MOB6231-FINAL-crop.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Raspberry">Raspberry
+    <img src="https://i.postimg.cc/6qJd0pDV/BERRAS-RD-HERITAGE-2T.jpg" alt="Raspberry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <div class="box interactive" data-name="Watermelon" tabindex="0">Watermelon
-    <img src="https://i.postimg.cc/kg4tWSB0/Watermelon.webp" alt="Barley" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  <div class="box interactive" data-name="Strawberry">Strawberry
+    <img src="https://i.postimg.cc/pdmzMjv5/20170323-MOB6231-FINAL-crop.webp" alt="Strawberry" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
   </div>
-  <a href="index.html" class="box-link">
-    <div class="box interactive" data-selectable="false" tabindex="0">Back
+  <div class="box interactive" data-name="Watermelon">Watermelon
+    <img src="https://i.postimg.cc/kg4tWSB0/Watermelon.webp" alt="Watermelon" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
+  </div>
+
+  <a href="CusineBot.html" class="box-link">
+    <div class="box interactive" data-selectable="false">Back
       <img src="https://i.postimg.cc/cHkrMFpR/93634.png" alt="Back" width="100" height="100" style="float: right; margin-right: 10px; margin-top: -10px;"/>
     </div>
   </a>
 
+  <script>
+    const boxes = Array.from(document.querySelectorAll('.interactive'));
+    let selectedIndex = 0;
 
+    function findNextSelectable(startIndex, direction = 1) {
+      let idx = startIndex;
+      do {
+        idx = (idx + direction + boxes.length) % boxes.length;
+      } while (boxes[idx].dataset.selectable === "false");
+      return idx;
+    }
+
+    selectedIndex = findNextSelectable(-1, 1);
+    boxes[selectedIndex].classList.add('selected');
+
+    async function connectSerial() {
+      try {
+        const port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+
+        const decoder = new TextDecoderStream();
+        port.readable.pipeTo(decoder.writable);
+        const input = decoder.readable.getReader();
+
+        while (true) {
+          const { value, done } = await input.read();
+          if (done) break;
+          if (value) handleCommand(value.trim());
+        }
+      } catch (err) {
+        console.error("Serial error:", err);
+      }
+    }
+
+    function handleCommand(cmd) {
+      if (cmd === "UP") {
+        boxes[selectedIndex].classList.remove("selected");
+        selectedIndex = findNextSelectable(selectedIndex, -1);
+        boxes[selectedIndex].classList.add("selected");
+      } 
+      else if (cmd === "DOWN") {
+        boxes[selectedIndex].classList.remove("selected");
+        selectedIndex = findNextSelectable(selectedIndex, 1);
+        boxes[selectedIndex].classList.add("selected");
+      } 
+      else if (cmd === "ENTER") {
+        const selectedBox = boxes[selectedIndex];
+        const link = selectedBox.closest("a");
+        if (link && link.href) {
+          window.location.href = link.href;
+        }
+        // Highlight stays on selectable boxes
+      }
+    }
+
+    document.getElementById("connectBtn").addEventListener("click", connectSerial);
+  </script>
 </body>
-
 </html>
