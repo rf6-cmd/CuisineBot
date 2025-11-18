@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My First Website</title>
-
+  <title>CuisineBot</title>
   <style>
     body {
       background-color: #F2DDA7;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: center;
     }
 
     .box {
@@ -19,106 +19,98 @@
       border-radius: 15px;
       font-size: 1.5rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
       cursor: pointer;
+      transition: border 0.2s, background-color 0.2s;
     }
 
     .selected {
       border: 5px solid #FCBA0F;
-      background-color: #ffe9b3;
-      box-shadow: 0 0 12px rgba(0,0,0,0.25);
+      background-color: #ffe9a3;
     }
 
-    .box-link {
+    a {
       text-decoration: none;
       color: black;
       display: block;
     }
 
-    #connect {
-      display: block;
-      margin: 20px auto;
+    #connectBtn {
+      margin-top: 30px;
       padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1.2rem;
       background-color: #FCBA0F;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
       cursor: pointer;
     }
   </style>
 </head>
 
 <body>
+  <h1>CuisineBot</h1>
+  <p style="font-size: 2rem;">Choose Ingredients</p>
 
-  <h1 style="color:black; font-size: 1.5rem;">CuisineBot</h1>
-  <p style="text-align:center; font-size: 2rem;">Choose Ingredients</p>
+  <a href="CuisineBotGrains.html" class="box-link"><div class="box">Grains</div></a>
+  <a href="CuisineBotVegetables.html" class="box-link"><div class="box">Vegetables</div></a>
+  <a href="CuisineBotProteins.html" class="box-link"><div class="box">Proteins</div></a>
+  <a href="CuisineBotFruits.html" class="box-link"><div class="box">Fruits</div></a>
+  <a href="CuisineBotDairy.html" class="box-link"><div class="box">Dairy</div></a>
+  <div class="box">Enter</div>
 
-  <!-- Button to connect Arduino -->
-  <button id="connect">Connect Arduino</button>
-
-  <!-- Boxes -->
-  <a href="CuisineBotGrains.html" class="box-link"><div class="box interactive">Grains</div></a>
-  <a href="CuisineBotVegetables.html" class="box-link"><div class="box interactive">Vegetables</div></a>
-  <a href="CuisineBotProteins.html" class="box-link"><div class="box interactive">Proteins</div></a>
-  <a href="CuisineBotFruits.html" class="box-link"><div class="box interactive">Fruits</div></a>
-  <a href="CuisineBotDairy.html" class="box-link"><div class="box interactive">Dairy</div></a>
-  <a href="recipes.html" class="box-link"><div class="box interactive">Enter</div></a>
+  <button id="connectBtn">🔌 Connect Arduino</button>
 
   <script>
-    let port;
-    let reader;
-    let currentIndex = 0;
+    const boxes = document.querySelectorAll('.box');
+    let selectedIndex = 0;
+    boxes[selectedIndex].classList.add('selected');
 
-    const items = Array.from(document.querySelectorAll(".box"));
+    async function connectSerial() {
+      try {
+        const port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+        const decoder = new TextDecoderStream();
+        port.readable.pipeTo(decoder.writable);
+        const inputStream = decoder.readable.getReader();
 
-    // highlight the first item
-    items[currentIndex].classList.add("selected");
-
-    document.getElementById("connect").addEventListener("click", async () => {
-      port = await navigator.serial.requestPort();
-      await port.open({ baudRate: 115200 });
-
-      const textDecoder = new TextDecoderStream();
-      const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-      reader = textDecoder.readable.getReader();
-
-      listenToArduino();
-    });
-
-    async function listenToArduino() {
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        if (!value) continue;
-
-        console.log("Arduino says:", value);
-
-        let cmd = value.trim();
-
-        if (cmd.includes("UP")) moveSelection(-1);
-        if (cmd.includes("DOWN")) moveSelection(1);
+        while (true) {
+          const { value, done } = await inputStream.read();
+          if (done) break;
+          if (value) handleCommand(value.trim());
+        }
+      } catch (err) {
+        console.error('Serial connection failed:', err);
       }
     }
 
-    function moveSelection(direction) {
-      items[currentIndex].classList.remove("selected");
+    function handleCommand(cmd) {
+      console.log('Received:', cmd);
 
-      currentIndex += direction;
+      if (cmd === 'UP') {
+        boxes[selectedIndex].classList.remove('selected');
+        selectedIndex = (selectedIndex - 1 + boxes.length) % boxes.length;
+        boxes[selectedIndex].classList.add('selected');
+      }
 
-      if (currentIndex < 0) currentIndex = items.length - 1;
-      if (currentIndex >= items.length) currentIndex = 0;
+      else if (cmd === 'DOWN') {
+        boxes[selectedIndex].classList.remove('selected');
+        selectedIndex = (selectedIndex + 1) % boxes.length;
+        boxes[selectedIndex].classList.add('selected');
+      }
 
-      items[currentIndex].classList.add("selected");
+      else if (cmd === 'ENTER') {
+  const selectedBox = boxes[selectedIndex];
+  const link = selectedBox.closest('a');
 
-      // Optional autoscroll
-      items[currentIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+  if (link && link.href) {
+    // Navigate manually to the link’s href
+    window.location.href = link.href;
+  } else {
+    alert(`You selected: ${selectedBox.textContent}`);
+  }
+}
     }
+
+    document.getElementById('connectBtn').addEventListener('click', connectSerial);
   </script>
 </body>
 </html>
-
-
-
-
-
-
