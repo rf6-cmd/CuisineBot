@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quinoa Salad</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      background-color: #F2DDA7;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, p {
+      text-align: center;
+      color: black;
+    }
+
+    .box {
+      width: 300px;
+      padding: 20px;
+      margin: 20px auto;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: background-color 0.2s ease, border 0.2s ease;
+    }
+
+    .interactive {
+      cursor: pointer;
+    }
+
+    .interactive:hover {
+      border: 5px solid #FCBA0F;
+    }
+
+    .interactive:focus {
+      outline: none;
+      border: 5px solid #fcd060;
+    }
+
+    .interactive.selected {
+      border: 5px solid #fc910f;
+      background-color: #ffe8c2;
+    }
+
+    ul, ol {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Back button container */
+    #back-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    /* Back button styling */
+    .back-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 300px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 5px solid #FCBA0F;
+      transition: background-color 0.2s ease, border 0.2s ease;
+    }
+
+    .back-box:hover {
+      background-color: #ffe8c2;
+    }
+
+    .back-box:focus {
+      outline: none;
+      border: 5px solid #fcd060;
+    }
+
+    .box-link {
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CuisineBot</h1>
+  <p style="font-size: 2rem;">Quinoa Salad</p>
+
+  <div class="box interactive" data-name="Chocolate Cake" tabindex="0">
+    <strong>Ingredients:</strong>
+    <ul>
+      <li>1 cup uncooked quinoa</li>
+      <li>2 cups water</li>
+      <li>1 medium cucumber</li>
+      <li>1 medium red bell pepper (diced)</li>
+      <li>¾ cup red onion (finely chopped)</li>
+      <li>¼ cup olive oil</li>
+      <li>¼ cup lemon juice</li>
+      <li>½ teaspoon fine sea salt</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+      <li>Rinse quinoa under cold water.</li>
+      <li>Combine quinoa and water in a medium saucepan. Bring to a boil, then reduce heat to a gentle simmer.</li>
+      <li>Cook uncovered until water is absorbed (about 15 minutes).</li>
+      <li>Remove from heat, cover, and let rest for 5 minutes. Fluff with a fork and cool.</li>
+      <li>In a large bowl combine cucumber, bell pepper, onion.</li>
+      <li>In a small bowl, whisk together garlic and salt until blended.</li>
+      <li>Add cooled quinoa to the veggie bowl.</li>
+      <li>Season with black pepper and adjust salt if needed.</li>
+      <li>Let salad sit for 5–10 minutes before serving for best flavor.</li>
+      <li>Keeps well in the fridge for up to 4 days. Serve chilled or at room temperature.</li>
+    </ol>
+  </div>
+
+  <div id="back-container">
+    <a href="recipes.html" class="box-link">
+      <div class="box back-box interactive" data-selectable="false" tabindex="0">
+        <span>Back</span>
+        <img src="https://i.postimg.cc/cHkrMFpR/93634.png" alt="Back" width="25" height="25" />
+      </div>
+    </a>
+  </div>
+</body>
+</html>
